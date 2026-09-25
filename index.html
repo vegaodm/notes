@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy Policy for Notes & Ideas, including local data, file import and export, and deletion practices.">
+  <title>Notes &amp; Ideas Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #f4f6fb;
+      --surface: #ffffff;
+      --surface-muted: #eef1f8;
+      --text: #182033;
+      --muted: #5f6b80;
+      --border: #dfe4ee;
+      --accent: #4f46e5;
+      --accent-soft: #e9e7ff;
+      --shadow: 0 16px 42px rgba(31, 41, 67, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #111522;
+        --surface: #1a2030;
+        --surface-muted: #242c40;
+        --text: #f2f4fa;
+        --muted: #aab4c8;
+        --border: #343e55;
+        --accent: #a9a4ff;
+        --accent-soft: #302d5b;
+        --shadow: 0 16px 42px rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    .page {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 17px;
+    }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .topnav a,
+    .button-link {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 13px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .topnav a:hover,
+    .topnav a:focus-visible,
+    .button-link:hover,
+    .button-link:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero,
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: clamp(28px, 6vw, 58px);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 18px;
+      font-size: clamp(32px, 6vw, 58px);
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(23px, 4vw, 30px);
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .lede {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .content {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: clamp(22px, 5vw, 38px);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .summary-item {
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--surface-muted);
+      padding: 16px;
+    }
+
+    .summary-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .summary-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+      background: var(--accent-soft);
+      padding: 16px 18px;
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 10px 0 18px;
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 7px;
+    }
+
+    code {
+      border-radius: 6px;
+      background: var(--surface-muted);
+      padding: 2px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--border);
+      padding: 13px 15px;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--surface-muted);
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(100% - 20px, 960px);
+        padding-top: 18px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .topbar,
+      .footer {
+        display: none;
+      }
+
+      .hero,
+      .card {
+        border: 1px solid #cccccc;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Notes & Ideas Privacy Policy home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span>Notes &amp; Ideas</span>
+      </a>
+      <nav class="topnav" aria-label="Page navigation">
+        <a href="#overview">Overview</a>
+        <a href="#data">Data handling</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <p class="eyebrow">Privacy Policy</p>
+        <h1>Notes &amp; Ideas Privacy Policy</h1>
+        <p class="lede">This policy explains how Notes &amp; Ideas handles note and tag content on your iPhone or iPad.</p>
+        <div class="meta">
+          <span>Version: 1.0 (Build 1)</span>
+          <span>Minimum system: iOS 17.0</span>
+          <span>Effective date: September 25, 2026</span>
+        </div>
+        <div class="summary" aria-label="Privacy summary">
+          <div class="summary-item">
+            <strong>Local by default</strong>
+            <span>Notes and tags are stored in local app data on your device.</span>
+          </div>
+          <div class="summary-item">
+            <strong>No active networking</strong>
+            <span>The current version has no accounts, cloud sync, analytics, ads, or tracking.</span>
+          </div>
+          <div class="summary-item">
+            <strong>You control files</strong>
+            <span>The app reads or writes a file only when you choose an import or export action.</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="content">
+        <section class="card">
+          <h2>1. Scope</h2>
+          <p>This policy applies to the Notes &amp; Ideas iOS app. The current app is a local note-taking tool for creating, editing, searching, previewing, pinning, restoring, and deleting notes, with tags used to organize content.</p>
+          <p>This policy describes the behavior of the current app version. Device backups, the system file picker, and its underlying file providers may be handled by Apple or by a service you choose, and are outside the app's full control.</p>
+        </section>
+
+        <section class="card" id="data">
+          <h2>2. Data Stored and Processed by the App</h2>
+          <p>To provide note-taking features, the app stores the following content locally on your device:</p>
+          <ul>
+            <li>Note titles, note content, creation dates, update dates, and unique identifiers;</li>
+            <li>Note pinned status, deletion status, and tag relationships;</li>
+            <li>Tag names, normalized names, creation dates, and unique identifiers.</li>
+          </ul>
+          <p>Search terms, filters, and the Preview zoom level are interface state and are not currently written as separate records in app data. The app does not require an account, create a user profile, or ask for a name, email address, or other identity information.</p>
+          <div class="callout">
+            <p><strong>Local first:</strong> The current source code and features do not include a process for sending note content to a server. The app has no account login, cloud sync, online search, advertising, analytics, or cross-app tracking.</p>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>3. Import, Export, and Backups</h2>
+          <p>The app accesses a file only when you actively use an import or export feature and select a file. File operations are handled by the iOS system file picker.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Format</th>
+                  <th>Data scope</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Full data export</td>
+                  <td>JSONL (<code>.jsonl</code>)</td>
+                  <td>All notes, tags, and note metadata, including notes in Trash.</td>
+                </tr>
+                <tr>
+                  <td>Full data import</td>
+                  <td>JSONL (<code>.jsonl</code>)</td>
+                  <td>Imports as a merge; local records missing from the backup are not automatically deleted.</td>
+                </tr>
+                <tr>
+                  <td>Single-note export</td>
+                  <td>JSON</td>
+                  <td>The current note and its assigned tags, which may include editor content that has not been saved yet.</td>
+                </tr>
+                <tr>
+                  <td>Single-note import</td>
+                  <td>JSON</td>
+                  <td>Loads into the editor for review first; it is written to local data only after you save.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Exported JSON and JSONL files are readable app data files and may contain note content in plain text. Keep them in a location you trust, and do not send sensitive backups to unrelated people. The app validates the format and version of imported files, but it cannot decide whether their contents are appropriate for you to import.</p>
+        </section>
+
+        <section class="card">
+          <h2>4. Permissions and External Files</h2>
+          <p>The current app does not use the camera, microphone, location, photo library, or contacts, and does not request those permissions. It accesses only the specific file you select when you start an import or export.</p>
+          <p>If a file comes from iCloud Drive or another system file provider, that provider and the operating system may control its storage, synchronization, and access. Manage the sharing, synchronization, and deletion settings for those files as needed.</p>
+        </section>
+
+        <section class="card">
+          <h2>5. Data Retention and Deletion</h2>
+          <ul>
+            <li>Deleting a regular note first moves it to Trash, where its content remains in local data.</li>
+            <li>Restoring from Trash returns the note to the regular note collection.</li>
+            <li><strong>Delete Forever</strong> is the action that requests permanent deletion; it cannot be undone.</li>
+            <li>Uninstalling the app, deleting its app container, or deleting an exported file may affect the corresponding data. iOS device backup behavior is managed by the operating system.</li>
+          </ul>
+          <p>The app does not provide a secure-erasure guarantee, so it cannot promise that deleted data is immediately unrecoverable from underlying storage. Use full data export for important content and keep exported files yourself.</p>
+        </section>
+
+        <section class="card">
+          <h2>6. Security</h2>
+          <p>The app does not provide account passwords, a separate app lock, or end-to-end encryption. Use your device's lock screen, encryption, and backup protections, and avoid leaving sensitive exports in an insecure location.</p>
+          <p>If a device is lost, damaged, or unlocked by someone else, a person who can access the device or its files may be able to read app data or exported files.</p>
+        </section>
+
+        <section class="card">
+          <h2>7. Policy Updates</h2>
+          <p>This policy may change when app features, data handling, or supported systems change. The updated version and effective date will be shown at the top of this page. Continued use of the app means that you should review the updated policy.</p>
+        </section>
+
+        <section class="card">
+          <h2>8. Contact</h2>
+          <p>If you have questions about this policy, local data, or exported files, contact the developer at <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a>. Please include the app version and your device system version when reporting a privacy concern.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Notes &amp; Ideas &middot; Privacy Policy &middot; <a href="support.html">Go to Support</a></p>
+    </footer>
+  </div>
+</body>
+</html>

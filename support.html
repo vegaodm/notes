@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support for Notes & Ideas, including Markdown Preview, search, tags, Trash, import, export, and local data questions.">
+  <title>Notes &amp; Ideas Support</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #f4f6fb;
+      --surface: #ffffff;
+      --surface-muted: #eef1f8;
+      --text: #182033;
+      --muted: #5f6b80;
+      --border: #dfe4ee;
+      --accent: #4f46e5;
+      --accent-soft: #e9e7ff;
+      --shadow: 0 16px 42px rgba(31, 41, 67, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #111522;
+        --surface: #1a2030;
+        --surface-muted: #242c40;
+        --text: #f2f4fa;
+        --muted: #aab4c8;
+        --border: #343e55;
+        --accent: #a9a4ff;
+        --accent-soft: #302d5b;
+        --shadow: 0 16px 42px rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    .page {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 17px;
+    }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .topnav a,
+    .button-link {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 13px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .topnav a:hover,
+    .topnav a:focus-visible,
+    .button-link:hover,
+    .button-link:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero,
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: clamp(28px, 6vw, 58px);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 18px;
+      font-size: clamp(32px, 6vw, 58px);
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(23px, 4vw, 30px);
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .lede {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .content {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: clamp(22px, 5vw, 38px);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .quick-item {
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--surface-muted);
+      padding: 18px;
+    }
+
+    .quick-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .quick-item p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+      background: var(--accent-soft);
+      padding: 16px 18px;
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: support-step;
+    }
+
+    .steps li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin: 0;
+    }
+
+    .steps li::before {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      content: counter(support-step);
+      counter-increment: support-step;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+
+    details:last-child {
+      border-bottom: 0;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 15px 0;
+      font-weight: 650;
+      list-style-position: inside;
+    }
+
+    details p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    code {
+      border-radius: 6px;
+      background: var(--surface-muted);
+      padding: 2px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .checklist {
+      margin: 10px 0 18px;
+      padding-left: 22px;
+    }
+
+    .checklist li + li {
+      margin-top: 7px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(100% - 20px, 960px);
+        padding-top: 18px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .quick-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .topbar,
+      .footer {
+        display: none;
+      }
+
+      .hero,
+      .card {
+        border: 1px solid #cccccc;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="support.html" aria-label="Notes & Ideas Support home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span>Notes &amp; Ideas</span>
+      </a>
+      <nav class="topnav" aria-label="Page navigation">
+        <a href="#quick-help">Quick help</a>
+        <a href="#faq">FAQ</a>
+        <a href="index.html">Privacy Policy</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="quick-help">
+        <p class="eyebrow">Support</p>
+        <h1>Notes &amp; Ideas Support</h1>
+        <p class="lede">Help for managing notes, tags, Markdown Preview, Trash, and import and export features locally.</p>
+        <div class="meta">
+          <span>App version: 1.0 (Build 1)</span>
+          <span>Minimum system: iOS 17.0</span>
+          <span>Page updated: September 25, 2026</span>
+        </div>
+        <div class="quick-grid" aria-label="Quick help">
+          <article class="quick-item">
+            <strong>Markdown Preview</strong>
+            <p>Select <code>Preview</code> in the editor to open a full-screen preview. Use the centered top controls, swipe through enlarged content, and double-tap to zoom or reset.</p>
+          </article>
+          <article class="quick-item">
+            <strong>Search and tags</strong>
+            <p>Use the list search field to find content by title, body, or tag. Tap a tag to filter, or press and hold a tag to clear the filter, rename it, or delete it.</p>
+          </article>
+          <article class="quick-item">
+            <strong>Trash</strong>
+            <p>Deleting a regular note first moves it to Trash. Restore it from Trash, or use <code>Delete Forever</code> to remove it permanently.</p>
+          </article>
+          <article class="quick-item">
+            <strong>Import and export</strong>
+            <p>Full data uses JSONL files, and single notes use JSON files. The iOS file picker handles file access.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="content">
+        <section class="card" id="preview-help">
+          <h2>Using Full-Screen Markdown Preview</h2>
+          <ol class="steps">
+            <li><div>Open a note and select <code>Preview</code> in the editor mode picker.</div></li>
+            <li><div>The app opens a full-screen Markdown preview over the editor. <code>Preview</code> is at the top left and <code>Done</code> is at the top right.</div></li>
+            <li><div>Use the centered <code>-</code>, <code>+</code>, or reset controls. You can also pinch the content or double-tap it.</div></li>
+            <li><div>Tap <code>Done</code> to return to the editor. After rotating the device, the preview is laid out again for the new screen width.</div></li>
+          </ol>
+          <div class="callout">
+            <p>Preview supports headings, paragraphs, regular lists, task lists, block quotes, code blocks, dividers, tables, and common inline Markdown formatting.</p>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Notes, Tags, and Trash</h2>
+          <ul class="checklist">
+            <li>Enter a title and body for a new note, then tap Save. Editor changes are written to local data only after you save.</li>
+            <li>New tags in the tag picker are applied as draft state first and become persistent after the note is saved successfully.</li>
+            <li>Deleting a tag removes only the tag relationship; it does not delete associated notes.</li>
+            <li>Renaming a tag checks for empty names and normalized-name conflicts.</li>
+            <li>Trash is a soft-delete area. Permanent deletion cannot be undone, so export important content first.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Import and Export</h2>
+          <h3>Full data</h3>
+          <p>In the note list menu, choose <code>Export Data</code> to create a JSONL backup. Choose <code>Import Data</code> to restore a file.</p>
+          <ul class="checklist">
+            <li>A full backup contains notes, tags, and metadata, including notes in Trash.</li>
+            <li>Import is a merge and does not automatically delete local records that are missing from the backup.</li>
+            <li>Matching notes are handled by note ID and update time; tags are merged by normalized name or ID.</li>
+            <li>Imports are rejected when the file format or backup version is invalid.</li>
+          </ul>
+          <h3>Single note</h3>
+          <p>For an existing note, use <code>Export Note JSON</code> or <code>Import Note JSON</code> in the editor. An imported note is loaded into the editor first; review it and tap Save when ready.</p>
+        </section>
+
+        <section class="card" id="faq">
+          <h2>Frequently Asked Questions</h2>
+          <details>
+            <summary>Why can I not find a note?</summary>
+            <p>Check that you are not in Trash and that the search term and selected tag filter match the note title, body, or tag content. Clear the search field and selected tags, then try again.</p>
+          </details>
+          <details>
+            <summary>Why does some Markdown not look the way I expected in Preview?</summary>
+            <p>Check that the Markdown syntax is complete. For example, fenced code blocks need at least three backticks, and tables need a header and separator row. Preview does not implement every extension supported by third-party Markdown editors.</p>
+          </details>
+          <details>
+            <summary>How do I zoom or reset Preview?</summary>
+            <p>Use the centered <code>-</code> and <code>+</code> buttons, pinch the content, or double-tap it. The reset button returns the view to 100%.</p>
+          </details>
+          <details>
+            <summary>Can I recover a deleted note?</summary>
+            <p>You can restore a note while it remains in Trash. After <code>Delete Forever</code>, the app does not provide an undo or restore action.</p>
+          </details>
+          <details>
+            <summary>Does the app automatically back up or sync to the cloud?</summary>
+            <p>The app does not provide automatic cloud sync, scheduled backups, or a server account. Device-level iOS backups and the file provider you choose are controlled by system settings.</p>
+          </details>
+          <details>
+            <summary>Why did importing a backup not remove all local content?</summary>
+            <p>Full data import is a merge operation. It does not clear local data before applying the backup, and local records missing from the backup are not automatically deleted.</p>
+          </details>
+          <details>
+            <summary>Is it safe to share exported files?</summary>
+            <p>Review the file first. JSON and JSONL backups may contain readable plain-text note content, so save and share them only in locations and with people you trust.</p>
+          </details>
+        </section>
+
+        <section class="card">
+          <h2>Still need help?</h2>
+          <p>When contacting support, include the following information, but do not paste note content or a complete backup:</p>
+          <ul class="checklist">
+            <li>The app version, iOS version, and device model;</li>
+            <li>The feature involved, such as Preview, Import Data, or a tag action;</li>
+            <li>Steps that reproduce the problem;</li>
+            <li>An error message or screenshot that does not contain private content.</li>
+          </ul>
+          <div class="callout">
+            <p>You can contact the developer at <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a>. Please do not send a full backup or sensitive note content by email.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Notes &amp; Ideas &middot; Support &middot; <a href="index.html">Read the Privacy Policy</a></p>
+    </footer>
+  </div>
+</body>
+</html>
