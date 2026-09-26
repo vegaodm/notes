@@ -362,16 +362,20 @@
         <div class="meta">
           <span>App version: 1.0 (Build 1)</span>
           <span>Minimum system: iOS 17.0</span>
-          <span>Page updated: September 25, 2026</span>
+          <span>Page updated: September 26, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
             <strong>Markdown Preview</strong>
-            <p>Select <code>Preview</code> in the editor to open a full-screen preview. Use the centered top controls, swipe through enlarged content, and double-tap to zoom or reset.</p>
+            <p>Tap <code>Preview</code> at the top right of the Title section to open a full-screen preview. Use the centered top controls, pinch to enlarge content, and double-tap to zoom or reset.</p>
           </article>
           <article class="quick-item">
             <strong>Search and tags</strong>
-            <p>Use the list search field to find content by title, body, or tag. Tap a tag to filter, or press and hold a tag to clear the filter, rename it, or delete it.</p>
+            <p>Scroll to the very bottom of the list and pause for about one second to bring up the floating search bar. Tap a tag to filter, or press and hold a tag to clear the filter, rename it, or delete it. Each tag keeps a stable color in the list, in the filter row, and in the editor.</p>
+          </article>
+          <article class="quick-item">
+            <strong>Note list</strong>
+            <p>Each note is one compact row: title, pinned marker, up to three tags, a numeric date, and a two-line body preview. Swipe a row to pin it or move it to Trash.</p>
           </article>
           <article class="quick-item">
             <strong>Trash</strong>
@@ -388,13 +392,13 @@
         <section class="card" id="preview-help">
           <h2>Using Full-Screen Markdown Preview</h2>
           <ol class="steps">
-            <li><div>Open a note and select <code>Preview</code> in the editor mode picker.</div></li>
+            <li><div>Open a note and tap the blue <code>Preview</code> button in the Title section header. The button is disabled while the note has no content.</div></li>
             <li><div>The app opens a full-screen Markdown preview over the editor. <code>Preview</code> is at the top left and <code>Done</code> is at the top right.</div></li>
             <li><div>Use the centered <code>-</code>, <code>+</code>, or reset controls. You can also pinch the content or double-tap it.</div></li>
             <li><div>Tap <code>Done</code> to return to the editor. After rotating the device, the preview is laid out again for the new screen width.</div></li>
           </ol>
           <div class="callout">
-            <p>Preview supports headings, paragraphs, regular lists, task lists, block quotes, code blocks, dividers, tables, and common inline Markdown formatting.</p>
+            <p>Preview supports headings, paragraphs, regular lists, task lists, block quotes, code blocks, dividers, tables, and common inline Markdown formatting. Tables honor column alignment written as <code>:---</code>, <code>:---:</code>, or <code>---:</code>. Text wrapped in <code>~~double tildes~~</code> is rendered with a strikethrough, plain URLs, <code>www.</code> addresses, and email addresses become tappable links without link syntax, and HTML comments are not shown. Raw HTML tags are displayed as text.</p>
           </div>
         </section>
 
@@ -402,9 +406,11 @@
           <h2>Notes, Tags, and Trash</h2>
           <ul class="checklist">
             <li>Enter a title and body for a new note, then tap Save. Editor changes are written to local data only after you save.</li>
+            <li>The title and body share one section, the body area keeps a fixed height of about 17 lines, and the body uses a monospaced font for editing.</li>
             <li>New tags in the tag picker are applied as draft state first and become persistent after the note is saved successfully.</li>
             <li>Deleting a tag removes only the tag relationship; it does not delete associated notes.</li>
             <li>Renaming a tag checks for empty names and normalized-name conflicts.</li>
+            <li>Tag colors are generated on device, so a tag keeps the same color in every list and in the editor without any extra setting.</li>
             <li>Trash is a soft-delete area. Permanent deletion cannot be undone, so export important content first.</li>
           </ul>
         </section>
@@ -426,12 +432,16 @@
         <section class="card" id="faq">
           <h2>Frequently Asked Questions</h2>
           <details>
+            <summary>Where is the search bar?</summary>
+            <p>The search bar is hidden by default so it does not take up space in the list. Scroll to the very bottom of the list and pause for about one second, and it slides in above the bottom edge. It also stays visible while you type, while the search field is focused, and while more notes are loading. Because it is a floating overlay, it does not move the list content.</p>
+          </details>
+          <details>
             <summary>Why can I not find a note?</summary>
             <p>Check that you are not in Trash and that the search term and selected tag filter match the note title, body, or tag content. Clear the search field and selected tags, then try again.</p>
           </details>
           <details>
             <summary>Why does some Markdown not look the way I expected in Preview?</summary>
-            <p>Check that the Markdown syntax is complete. For example, fenced code blocks need at least three backticks, and tables need a header and separator row. Preview does not implement every extension supported by third-party Markdown editors.</p>
+            <p>Check that the Markdown syntax is complete. For example, fenced code blocks need at least three backticks, tables need a header and separator row, and strikethrough needs <code>~~text~~</code> with no space directly after the opening tildes. Preview does not implement every extension supported by third-party Markdown editors, and raw HTML tags are shown as text.</p>
           </details>
           <details>
             <summary>How do I zoom or reset Preview?</summary>
