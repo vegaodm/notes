@@ -334,16 +334,16 @@
       <section class="hero" id="overview">
         <p class="eyebrow">Privacy Policy</p>
         <h1>Notes &amp; Ideas Privacy Policy</h1>
-        <p class="lede">This policy explains how Notes &amp; Ideas handles note and tag content on your iPhone or iPad.</p>
+        <p class="lede">This policy explains how Notes &amp; Ideas handles note, tag, and Project folder content on your iPhone or iPad.</p>
         <div class="meta">
-          <span>Version: 1.1.1 (Build 1)</span>
+          <span>Version: 1.2.0 (Build 1)</span>
           <span>Minimum system: iOS 17.0</span>
-          <span>Effective date: September 26, 2026</span>
+          <span>Effective date: October 7, 2026</span>
         </div>
         <div class="summary" aria-label="Privacy summary">
           <div class="summary-item">
             <strong>Local by default</strong>
-            <span>Notes and tags are stored in local app data on your device.</span>
+            <span>Notes, tags, and Project folders are stored in local app data on your device.</span>
           </div>
           <div class="summary-item">
             <strong>No active networking</strong>
@@ -359,7 +359,7 @@
       <div class="content">
         <section class="card">
           <h2>1. Scope</h2>
-          <p>This policy applies to the Notes &amp; Ideas iOS app. The current app is a local note-taking tool for creating, editing, searching, previewing, pinning, restoring, and deleting notes, with tags used to organize content.</p>
+          <p>This policy applies to the Notes &amp; Ideas iOS app. The current app is a local note-taking tool for creating, editing, searching, previewing, pinning, restoring, and deleting notes, with tags and Project folders used to organize content.</p>
           <p>This policy describes the behavior of the current app version. Device backups, the system file picker, and its underlying file providers may be handled by Apple or by a service you choose, and are outside the app's full control.</p>
         </section>
 
@@ -368,8 +368,9 @@
           <p>To provide note-taking features, the app stores the following content locally on your device:</p>
           <ul>
             <li>Note titles, note content, creation dates, update dates, and unique identifiers;</li>
-            <li>Note pinned status, deletion status, and tag relationships;</li>
-            <li>Tag names, normalized names, creation dates, and unique identifiers.</li>
+            <li>Note pinned status, deletion status, tag relationships, and the Project folder a note belongs to;</li>
+            <li>Tag names, normalized names, creation dates, and unique identifiers;</li>
+            <li>Project folder names, their parent and child structure, project status, pinned state, sort order, and unique identifiers.</li>
           </ul>
           <p>Search terms, tag filters, scroll position, and the Preview zoom level are interface state and are not currently written as separate records in app data. The search bar is revealed by an on-screen gesture only and is not stored or transmitted. The color shown for a tag is generated on device from the tag's normalized name, so the same tag keeps the same color without any additional record. The app does not require an account, create a user profile, or ask for a name, email address, or other identity information.</p>
           <div class="callout">
@@ -393,17 +394,17 @@
                 <tr>
                   <td>Full data export</td>
                   <td>JSONL (<code>.jsonl</code>)</td>
-                  <td>All notes, tags, and note metadata, including notes in Trash.</td>
+                  <td>All notes, tags, Project folders, and note metadata, including notes in Trash.</td>
                 </tr>
                 <tr>
                   <td>Full data import</td>
                   <td>JSONL (<code>.jsonl</code>)</td>
-                  <td>Imports as a merge; local records missing from the backup are not automatically deleted.</td>
+                  <td>Imports as a merge (notes by ID and update time; tags and folders by ID or normalized name); local records missing from the backup are not automatically deleted.</td>
                 </tr>
                 <tr>
                   <td>Single-note export</td>
                   <td>JSON</td>
-                  <td>The current note and its assigned tags, which may include editor content that has not been saved yet.</td>
+                  <td>The current note, its assigned tags, and its Project folder path when it belongs to one; this may include editor content that has not been saved yet.</td>
                 </tr>
                 <tr>
                   <td>Single-note import</td>
@@ -413,7 +414,7 @@
               </tbody>
             </table>
           </div>
-          <p>Exported JSON and JSONL files are readable app data files and may contain note content in plain text. Keep them in a location you trust, and do not send sensitive backups to unrelated people. The app validates the format and version of imported files, but it cannot decide whether their contents are appropriate for you to import.</p>
+          <p>Exported JSON and JSONL files are readable app data files and may contain note content in plain text. Keep them in a location you trust, and do not send sensitive backups to unrelated people. The app validates the format and version of imported files, but it cannot decide whether their contents are appropriate for you to import. Files exported by an earlier app version use an older format version and are rejected rather than upgraded.</p>
         </section>
 
         <section class="card">
@@ -426,6 +427,7 @@
           <h2>5. Data Retention and Deletion</h2>
           <ul>
             <li>Deleting a regular note first moves it to Trash, where its content remains in local data.</li>
+            <li>Deleting a Project folder moves its active notes to Trash, leaves archived and already-trashed notes in their state, and removes the folder together with its subfolders; restoring those notes later places them at the Project root.</li>
             <li>Restoring from Trash returns the note to the regular note collection.</li>
             <li><strong>Delete Forever</strong> is the action that requests permanent deletion; it cannot be undone.</li>
             <li>Uninstalling the app, deleting its app container, or deleting an exported file may affect the corresponding data. iOS device backup behavior is managed by the operating system.</li>

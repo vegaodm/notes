@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Support for Notes & Ideas, including Markdown Preview, search, tags, Trash, import, export, and local data questions.">
+  <meta name="description" content="Support for Notes & Ideas, including projects and folders, Markdown Preview, search, tags, Trash, import, export, and local data questions.">
   <title>Notes &amp; Ideas Support</title>
   <style>
     :root {
@@ -349,6 +349,7 @@
       </a>
       <nav class="topnav" aria-label="Page navigation">
         <a href="#quick-help">Quick help</a>
+        <a href="#projects">Projects</a>
         <a href="#faq">FAQ</a>
         <a href="index.html">Privacy Policy</a>
       </nav>
@@ -358,11 +359,11 @@
       <section class="hero" id="quick-help">
         <p class="eyebrow">Support</p>
         <h1>Notes &amp; Ideas Support</h1>
-        <p class="lede">Help for managing notes, tags, Markdown Preview, Trash, and import and export features locally.</p>
+        <p class="lede">Help for managing notes, projects and folders, tags, Markdown Preview, Trash, and import and export features locally.</p>
         <div class="meta">
-          <span>App version: 1.1.1 (Build 1)</span>
+          <span>App version: 1.2.0 (Build 1)</span>
           <span>Minimum system: iOS 17.0</span>
-          <span>Page updated: September 26, 2026</span>
+          <span>Page updated: October 7, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
@@ -378,8 +379,12 @@
             <p>Each note is one compact row: title, pinned marker, up to three tags, a numeric date, and a two-line body preview. Swipe a row right to pin it, or left for <code>Archive</code> and <code>Delete</code>.</p>
           </article>
           <article class="quick-item">
-            <strong>Archive</strong>
-            <p>Use the top-left menu to switch between Notes &amp; Ideas, Archive, and Trash. Archived ideas stay searchable in Archive, and can be unarchived or deleted forever with a swipe.</p>
+            <strong>Projects</strong>
+            <p>Open the top-left menu and choose Project to organize ideas as a tree: top-level folders are projects, deeper folders are subfolders, and notes are the items inside. Press and hold a folder to rename it, move it, pin it, change its status, or delete it.</p>
+          </article>
+          <article class="quick-item">
+            <strong>Collections</strong>
+            <p>Use the top-left menu to switch between Notes &amp; Ideas, Project, Archive, and Trash. Archived ideas stay searchable in Archive, and can be unarchived or deleted forever with a swipe.</p>
           </article>
           <article class="quick-item">
             <strong>Trash</strong>
@@ -421,18 +426,34 @@
           </ul>
         </section>
 
+        <section class="card" id="projects">
+          <h2>Projects and Folders</h2>
+          <p>Use the top-left menu to open the <strong>Project</strong> space and organize ideas as a tree. Top-level folders are projects, deeper folders are subfolders, and notes are the items they contain. Notes can also sit directly at the Project root when they are not yet filed.</p>
+          <ul class="checklist">
+            <li>Tap a folder to open it. The title shows the full path, such as <code>Client A &rsaquo; Phase 1</code>.</li>
+            <li>While in Project, tap <code>+</code> to create a new idea, or a new project/subfolder.</li>
+            <li>Press and hold a project or folder to <code>Rename</code> it, <code>Move&hellip;</code> it, pin it, change its <code>Status</code>, or delete it. Status offers <code>Active</code>, <code>On Hold</code>, and <code>Done</code>.</li>
+            <li>Press and hold a note and choose <code>Move to&hellip;</code> to move it to Notes &amp; Ideas, the Project root, or any folder in the tree.</li>
+            <li>Projects are ordered by pinned first, then Active, On Hold, Done, and finally most recently updated. Subfolders are ordered by pinned first, then name.</li>
+            <li>A project or folder row shows its recursive note count, subfolder count, and last update. When a folder has notes in Trash, it also offers <code>View Trash</code>.</li>
+            <li>Searching while in Project covers every folder and shows each result's folder path; folder names are matched too.</li>
+            <li>Use <code>Status = Done</code> to retire a project without deleting it &mdash; Project status replaces folder-level archiving.</li>
+            <li>Deleting a project or folder moves its active notes to Trash, leaves archived and already-trashed notes in their state, and removes the folder together with its subfolders. A confirmation shows how many notes and subfolders are affected.</li>
+          </ul>
+        </section>
+
         <section class="card">
           <h2>Import and Export</h2>
           <h3>Full data</h3>
           <p>In the note list menu, choose <code>Export Data</code> to create a JSONL backup. Choose <code>Import Data</code> to restore a file.</p>
           <ul class="checklist">
-            <li>A full backup contains notes, tags, and metadata, including notes in Trash.</li>
+            <li>A full backup contains notes, tags, Project folders, and metadata, including notes in Trash.</li>
             <li>Import is a merge and does not automatically delete local records that are missing from the backup.</li>
-            <li>Matching notes are handled by note ID and update time; tags are merged by normalized name or ID.</li>
-            <li>Imports are rejected when the file format or backup version is invalid.</li>
+            <li>Matching notes are handled by note ID and update time; tags are merged by normalized name or ID, and folders by ID first, then by normalized name under the same parent.</li>
+            <li>Imports are rejected when the file format or backup version is invalid. Files exported by an earlier app version use an older format version and are not accepted; import them before updating if you still need them.</li>
           </ul>
           <h3>Single note</h3>
-          <p>For an existing note, use <code>Export Note JSON</code> or <code>Import Note JSON</code> in the editor. An imported note is loaded into the editor first; review it and tap Save when ready.</p>
+          <p>For an existing note, use <code>Export Note JSON</code> or <code>Import Note JSON</code> in the editor. When the note is in a Project folder, the file also carries its folder path. An imported note is loaded into the editor first; review it and tap Save when ready.</p>
         </section>
 
         <section class="card" id="faq">
@@ -443,7 +464,7 @@
           </details>
           <details>
             <summary>Why can I not find a note?</summary>
-            <p>Check that you are not in Trash and that the search term and selected tag filter match the note title, body, or tag content. Clear the search field and selected tags, then try again.</p>
+            <p>Check that you are in the right space (Notes &amp; Ideas or Project) and not in Trash, and that the search term and selected tag filter match the note title, body, or tag content. Searching in Project covers all folders, so also try clearing the search field and selected tags.</p>
           </details>
           <details>
             <summary>Why does some Markdown not look the way I expected in Preview?</summary>
@@ -473,6 +494,22 @@
             <summary>Is it safe to share exported files?</summary>
             <p>Review the file first. JSON and JSONL backups may contain readable plain-text note content, so save and share them only in locations and with people you trust.</p>
           </details>
+          <details>
+            <summary>Where is the Project space?</summary>
+            <p>Tap the top-left collection menu to switch between Notes &amp; Ideas, Project, Archive, and Trash. Archive and Trash are shared by both spaces.</p>
+          </details>
+          <details>
+            <summary>How do I move a note into a project or folder?</summary>
+            <p>Press and hold the note and choose <code>Move to&hellip;</code>, then pick Notes &amp; Ideas, the Project root, or a folder. Moving to Notes &amp; Ideas clears the note's folder.</p>
+          </details>
+          <details>
+            <summary>What happens when I delete a folder?</summary>
+            <p>Active notes inside it move to Trash, archived and already-trashed notes keep their state and lose the folder, and the folder plus its subfolders are deleted. A confirmation lists how many notes and subfolders are affected. Restoring a note later places it at the Project root.</p>
+          </details>
+          <details>
+            <summary>Why can I not import my old backup?</summary>
+            <p>This version uses a newer JSONL backup and single-note JSON format. Files created by earlier app versions are rejected instead of being upgraded, so import them with the older app version first if you still need their contents.</p>
+          </details>
         </section>
 
         <section class="card">
@@ -480,7 +517,7 @@
           <p>When contacting support, include the following information, but do not paste note content or a complete backup:</p>
           <ul class="checklist">
             <li>The app version, iOS version, and device model;</li>
-            <li>The feature involved, such as Preview, Import Data, or a tag action;</li>
+            <li>The feature involved, such as Projects, Preview, Import Data, or a tag action;</li>
             <li>Steps that reproduce the problem;</li>
             <li>An error message or screenshot that does not contain private content.</li>
           </ul>
