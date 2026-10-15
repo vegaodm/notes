@@ -361,9 +361,9 @@
         <h1>Notes &amp; Ideas Support</h1>
         <p class="lede">Help for managing notes, projects and folders, tags, Markdown Preview, Trash, and import and export features locally.</p>
         <div class="meta">
-          <span>App version: 1.2.1 (Build 1)</span>
-          <span>Minimum system: iOS 17.0</span>
-          <span>Page updated: October 12, 2026</span>
+          <span>App version: 1.3.0 (Build 1)</span>
+          <span>Minimum system: iOS 26.0</span>
+          <span>Page updated: October 15, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
@@ -417,7 +417,7 @@
           <ul class="checklist">
             <li>Rows keep the full-width layout with the title, excerpt, tags, and date on one line.</li>
             <li>Tiles show two per row with the title, a short excerpt, a tag, and the date. Tapping a tile opens the idea in the editor.</li>
-            <li>In Notes &amp; Ideas and Project, pinned ideas stay in a <code>Pinned</code> section as rows above the <code>All Ideas</code> tiles. Projects and folders always stay as rows.</li>
+            <li>In Notes &amp; Ideas and Project, pinned ideas stay in a <code>Pinned</code> section above the <code>All Ideas</code> tiles, each drawn as a full-width card lined up with the tiles below. Projects and folders always stay as rows.</li>
             <li>Swiping a row is not available on tiles, so press and hold a tile for <code>Move to&hellip;</code>, <code>Pin</code>, <code>Archive</code>, or <code>Delete</code>. Archive and Trash offer their own actions the same way.</li>
           </ul>
         </section>
@@ -465,6 +465,19 @@
           </ul>
           <h3>Single note</h3>
           <p>For an existing note, use <code>Export Note JSON</code> or <code>Import Note JSON</code> in the editor. When the note is in a Project folder, the file also carries its folder path. An imported note is loaded into the editor first; review it and tap Save when ready.</p>
+        </section>
+
+        <section class="card" id="ios-26">
+          <h2>Appearance on iOS 26</h2>
+          <p>Version 1.3.0 requires iOS 26 or later and adopts Liquid Glass, the material introduced with that release. Navigation bars, toolbars, menus, and sheets pick it up automatically. The app's own floating surfaces use it too: the search field that slides in above the list, the progress panel shown while a backup is written, and the controls in the full-screen Markdown preview header.</p>
+          <ul class="checklist">
+            <li>Content keeps its plain fills &mdash; note rows, tiles, tag chips, code blocks, and tables are unchanged. Liquid Glass is reserved for the controls and navigation above the content.</li>
+            <li>The preview header no longer draws an opaque band. Scroll the Markdown preview and the text fades into the top edge behind the header instead of being cut off by it.</li>
+            <li>Liquid Glass follows your system settings. With <strong>Reduce Transparency</strong> the material becomes frostier, <strong>Increase Contrast</strong> adds contrasting borders, and <strong>Reduce Motion</strong> removes the elastic movement.</li>
+          </ul>
+          <div class="callout">
+            <p>This version requires iOS 26, so it will not install on a device that cannot update to iOS 26. Your notes are not affected by the change, but such a device stays on the previous app version.</p>
+          </div>
         </section>
 
         <section class="card" id="faq">
