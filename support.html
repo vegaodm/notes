@@ -361,9 +361,9 @@
         <h1>Notes &amp; Ideas Support</h1>
         <p class="lede">Help for managing notes, projects and folders, tags, Markdown Preview, Trash, and import and export features locally.</p>
         <div class="meta">
-          <span>App version: 1.3.0 (Build 1)</span>
+          <span>App version: 1.4.2 (Build 2)</span>
           <span>Minimum system: iOS 26.0</span>
-          <span>Page updated: October 15, 2026</span>
+          <span>Page updated: October 19, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
@@ -467,9 +467,28 @@
           <p>For an existing note, use <code>Export Note JSON</code> or <code>Import Note JSON</code> in the editor. When the note is in a Project folder, the file also carries its folder path. An imported note is loaded into the editor first; review it and tap Save when ready.</p>
         </section>
 
+        <section class="card" id="recovery">
+          <h2>If the App Can’t Open Your Notes</h2>
+          <p>In rare cases the app cannot open its notes database, usually after an interrupted upgrade or when the device ran out of storage. It then shows a <strong>Couldn’t Open Your Notes</strong> screen instead of starting. <strong>Nothing has been deleted.</strong> The screen lists the database files, any copy taken before an upgrade, and offers:</p>
+          <p>If the screen shows an orange line saying the copy taken before the upgrade <em>could not be written</em>, the app never had a copy to fall back on — most often because the device was already out of storage. Free some space first; <strong>Try Again</strong> and <strong>Save My Data…</strong> both need room to work.</p>
+          <ul class="checklist">
+            <li><strong>Try Again</strong> — attempts to open the database again. Worth trying first if the device was low on storage.</li>
+            <li><strong>Restore a Copy…</strong> — puts a copy taken before an upgrade back in place. The database it replaces is moved into <code>StoreBackups</code>, keeping its name, so it can be put back from the same screen. A copy predates an upgrade, so it may not contain notes added since it was taken.</li>
+            <li><strong>Copy Details</strong> — copies the app version, system version, error, file paths, and file sizes, so you can send them to support without typing anything by hand.</li>
+            <li><strong>Save My Data…</strong> — saves your notes to a file you choose. If the database can still be read, you get a backup you can import again with <code>Import Data</code>. If it cannot, you get the database files themselves: they hold your notes but cannot be opened on this device, so keep them somewhere safe rather than sending them anywhere.</li>
+            <li><strong>Start Over…</strong> — makes the app open again with an empty database. The current one is moved into <code>StoreBackups</code> and can be put back with <strong>Restore a Copy…</strong>, so this is not final either.</li>
+          </ul>
+          <div class="callout">
+            <p>Every option that changes something moves the existing file aside rather than deleting it, and the app never writes to the database while it is in this state. If none of the options helps, use <strong>Copy Details</strong> and mention which ones you tried.</p>
+          </div>
+          <div class="callout">
+            <p>Keeping those copies means the app uses more storage than your notes alone, and they are not removed by Delete Forever or Empty Trash — deleting the app removes them together with everything else. If you are recovering from a full device, free some space first: <strong>Try Again</strong> and <strong>Restore a Copy…</strong> both need room to work.</p>
+          </div>
+        </section>
+
         <section class="card" id="ios-26">
           <h2>Appearance on iOS 26</h2>
-          <p>Version 1.3.0 requires iOS 26 or later and adopts Liquid Glass, the material introduced with that release. Navigation bars, toolbars, menus, and sheets pick it up automatically. The app's own floating surfaces use it too: the search field that slides in above the list, the progress panel shown while a backup is written, and the controls in the full-screen Markdown preview header.</p>
+          <p>The app requires iOS 26 or later, and adopts Liquid Glass, the material introduced with that release. Navigation bars, toolbars, menus, and sheets pick it up automatically. The app's own floating surfaces use it too: the search field that slides in above the list, the progress panel shown while a backup is written, and the controls in the full-screen Markdown preview header.</p>
           <ul class="checklist">
             <li>Content keeps its plain fills &mdash; note rows, tiles, tag chips, code blocks, and tables are unchanged. Liquid Glass is reserved for the controls and navigation above the content.</li>
             <li>The preview header no longer draws an opaque band. Scroll the Markdown preview and the text fades into the top edge behind the header instead of being cut off by it.</li>
@@ -543,7 +562,8 @@
             <li>The app version, iOS version, and device model;</li>
             <li>The feature involved, such as Projects, Preview, Import Data, or a tag action;</li>
             <li>Steps that reproduce the problem;</li>
-            <li>An error message or screenshot that does not contain private content.</li>
+            <li>An error message or screenshot that does not contain private content;</li>
+            <li>If the app showed the <strong>Couldn’t Open Your Notes</strong> screen, the text from <strong>Copy Details</strong>. It contains no note content, so it is safe to send, and it saves you typing out paths and file sizes.</li>
           </ul>
           <div class="callout">
             <p>You can contact the developer at <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a>. Please do not send a full backup or sensitive note content by email.</p>
