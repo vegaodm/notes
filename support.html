@@ -361,9 +361,9 @@
         <h1>Notes &amp; Ideas Support</h1>
         <p class="lede">Help for managing notes, projects and folders, tags, Markdown Preview, Trash, and import and export features locally.</p>
         <div class="meta">
-          <span>App version: 1.4.3 (Build 3)</span>
+          <span>App version: 1.5.0 (Build 4)</span>
           <span>Minimum system: iOS 26.0</span>
-          <span>Page updated: October 23, 2026</span>
+          <span>Page updated: October 26, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
@@ -413,19 +413,34 @@
 
         <section class="card" id="layouts">
           <h2>List and Tile Layouts</h2>
-          <p>Use the top-right layout menu to switch the idea list between rows and two-column tiles. The choice is remembered and applies to Notes &amp; Ideas, Project, folders, Archive, and Trash.</p>
+          <p>Use the top-right layout menu to switch the idea list between rows and tiles. The choice is remembered and applies to Notes &amp; Ideas, Project, folders, Archive, and Trash.</p>
           <ul class="checklist">
             <li>Rows keep the full-width layout with the title, excerpt, tags, and date on one line.</li>
-            <li>Tiles show two per row with the title, a short excerpt, a tag, and the date. Tapping a tile opens the idea in the editor.</li>
+            <li>Tiles show the title, a short excerpt, a tag, and the date. Tapping a tile opens the idea in the editor.</li>
+            <li>The number of tiles per row follows the width of the window rather than a fixed column count: two on an iPhone, and more — four or five — on an iPad or the unfolded display of a foldable. Tile width stays between 160 and 240 points, so tiles never stretch into a pair of oversized cards.</li>
+            <li>On a foldable, the grid prefers an even number of columns when a fold divides the display, and opens a gap between the middle two so no tile sits on the fold itself.</li>
             <li>In Notes &amp; Ideas and Project, pinned ideas stay in a <code>Pinned</code> section above the <code>All Ideas</code> tiles, each drawn as a full-width card lined up with the tiles below. Projects and folders always stay as rows.</li>
             <li>Swiping a row is not available on tiles, so press and hold a tile for <code>Move to&hellip;</code>, <code>Pin</code>, <code>Archive</code>, or <code>Delete</code>. Archive and Trash offer their own actions the same way.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="wide-screens">
+          <h2>iPad, Foldables, and Wide Screens</h2>
+          <p>When the window is wide, the idea list and the editor sit side by side instead of one after the other: on an iPad in portrait or landscape, on the unfolded inner display of a foldable iPhone, and in any window wide enough to be laid out at a regular width. An iPhone, and a foldable's outer display while it is closed, keep the single-column layout the app has always had.</p>
+          <ul class="checklist">
+            <li>Tap an idea in the left column and it opens in the editor on the right. There is no separate preview step and no second tap to start editing.</li>
+            <li>The open idea stays highlighted in the list, so the right-hand column is always traceable to a row.</li>
+            <li>Saving still happens only when you tap the checkmark. If you have unsaved edits and tap another idea, the app asks <em>Discard unsaved changes?</em> before switching, and <code>Keep Editing</code> leaves the draft intact.</li>
+            <li>Archiving or deleting the open idea from the list clears the right-hand column, so you are never editing an idea that has left the list.</li>
+            <li>The button at the far right of the list's toolbar hides and shows the list, which gives the editor the full width.</li>
+            <li>On a foldable, the system moves the toolbars to the screen edge beside the fold on its own, and the app's buttons are in that side bar either way — the tile grid fits its columns to the two halves.</li>
           </ul>
         </section>
 
         <section class="card">
           <h2>Notes, Tags, and Trash</h2>
           <ul class="checklist">
-            <li>Enter a title and body for a new note, then tap Save. Editor changes are written to local data only after you save.</li>
+            <li>Enter a title and body for a new note, then save it with the checkmark at the top right of the editor. Editor changes are written to local data only after you save.</li>
             <li>The title and body share one section, the body area keeps a fixed height of about 17 lines, and the body uses a monospaced font for editing.</li>
             <li>Swiping a row left offers <code>Archive</code> and <code>Delete</code>. Archived ideas leave the Notes &amp; Ideas list, keep their content, and can be unarchived at any time.</li>
             <li>New tags in the tag picker are applied as draft state first and become persistent after the note is saved successfully.</li>
@@ -520,6 +535,10 @@
           <details>
             <summary>Where did my idea go after I archived it?</summary>
             <p>Archived ideas are removed from Notes &amp; Ideas and stay in the Archive collection in the top-left menu, listed with the archive date. Swipe an archived row right to bring it back, or left to delete it forever.</p>
+          </details>
+          <details>
+            <summary>Why does the editor show a checkmark and an X instead of Save and Cancel?</summary>
+            <p>Toolbar buttons display only their icon in the navigation bar; the title appears in the overflow menu and is read by VoiceOver. In the editor the checkmark saves the idea, and the X discards the changes made since the last save. The X appears only while there are unsaved changes.</p>
           </details>
           <details>
             <summary>Can I recover a deleted note?</summary>
