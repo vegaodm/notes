@@ -361,14 +361,14 @@
         <h1>Notes &amp; Ideas Support</h1>
         <p class="lede">Help for managing notes, projects and folders, tags, Markdown Preview, Trash, and import and export features locally.</p>
         <div class="meta">
-          <span>App version: 1.5.1 (Build 5)</span>
+          <span>App version: 1.5.2 (Build 6)</span>
           <span>Minimum system: iOS 26.0</span>
-          <span>Page updated: October 28, 2026</span>
+          <span>Page updated: November 3, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
             <strong>Markdown Preview</strong>
-            <p>Tap <code>Preview</code> at the top right of the Title section to open a full-screen preview. Use the centered top controls, pinch to enlarge content, and double-tap to zoom or reset.</p>
+            <p>Tap <code>Preview</code> at the top right of the Title section to open a full-screen preview. Use the centered top controls, pinch to enlarge content, and double-tap to fit the page or zoom in.</p>
           </article>
           <article class="quick-item">
             <strong>Search and tags</strong>
@@ -403,7 +403,8 @@
           <ol class="steps">
             <li><div>Open a note and tap the blue <code>Preview</code> button in the Title section header. The button is disabled while the note has no content.</div></li>
             <li><div>The app opens a full-screen Markdown preview over the editor. <code>Preview</code> is at the top left and <code>Done</code> is at the top right.</div></li>
-            <li><div>Use the centered <code>-</code>, <code>+</code>, or reset controls. You can also pinch the content or double-tap it.</div></li>
+            <li><div>Use the centered <code>-</code>, <code>+</code>, or fit controls. You can also pinch the content or double-tap it.</div></li>
+            <li><div>The note is drawn as a page with a visible edge. Zoom out until the whole page fits on screen to see every table column and code line at once, then zoom in on the part you want to read.</div></li>
             <li><div>Tap <code>Done</code> to return to the editor. After rotating the device, the preview is laid out again for the new screen width.</div></li>
           </ol>
           <div class="callout">
@@ -416,7 +417,7 @@
           <p>Use the top-right layout menu to switch the idea list between rows and tiles. The choice is remembered and applies to Notes &amp; Ideas, Project, folders, Archive, and Trash.</p>
           <ul class="checklist">
             <li>Rows keep the full-width layout with the title, excerpt, tags, and date on one line.</li>
-            <li>Tiles show the title, a short excerpt, a tag, and the date. Tapping a tile opens the idea in the editor.</li>
+            <li>Tiles show the title, a short excerpt, a tag, and the date. Tapping a tile selects it; tapping the same tile again opens the idea in the editor, so a tap you did not mean does not take you out of the list.</li>
             <li>The number of tiles per row follows the width of the window rather than a fixed column count: two on an iPhone, and more — four or five — on an iPad or the unfolded display of a foldable. Tile width stays between 160 and 240 points, so tiles never stretch into a pair of oversized cards.</li>
             <li>On a foldable, the grid prefers an even number of columns when a fold divides the display, and opens a gap between the middle two so no tile sits on the fold itself.</li>
             <li>In Notes &amp; Ideas and Project, pinned ideas stay in a <code>Pinned</code> section above the <code>All Ideas</code> tiles, each drawn as a full-width card lined up with the tiles below.</li>
@@ -531,8 +532,8 @@
             <p>Check that the Markdown syntax is complete. For example, fenced code blocks need at least three backticks, tables need a header and separator row, and strikethrough needs <code>~~text~~</code> with no space directly after the opening tildes. Preview does not implement every extension supported by third-party Markdown editors, and raw HTML tags are shown as text.</p>
           </details>
           <details>
-            <summary>How do I zoom or reset Preview?</summary>
-            <p>Use the centered <code>-</code> and <code>+</code> buttons, pinch the content, or double-tap it. The reset button returns the view to 100%.</p>
+            <summary>How do I zoom or fit Preview?</summary>
+            <p>Use the centered <code>-</code> and <code>+</code> buttons, pinch the content, or double-tap it. The button with the inward arrows fits the whole page: a note with a wide table or a long code line is wider than the screen, and that button (also the furthest the preview will zoom out) brings all of it into view. The percentage in the header is the scale of the page, so on such a note it can go below 100%.</p>
           </details>
           <details>
             <summary>Where did my idea go after I archived it?</summary>
