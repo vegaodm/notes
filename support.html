@@ -361,9 +361,9 @@
         <h1>Notes &amp; Ideas Support</h1>
         <p class="lede">Help for managing notes, projects and folders, tags, Markdown Preview, Trash, and import and export features locally.</p>
         <div class="meta">
-          <span>App version: 1.5.3 (Build 7)</span>
+          <span>App version: 1.5.4 (Build 1)</span>
           <span>Minimum system: iOS 26.0</span>
-          <span>Page updated: November 11, 2026</span>
+          <span>Page updated: November 23, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
@@ -480,6 +480,7 @@
             <li>Import is a merge and does not automatically delete local records that are missing from the backup.</li>
             <li>Matching notes are handled by note ID and update time; tags are merged by normalized name or ID, and folders by ID first, then by normalized name under the same parent.</li>
             <li>Imports are rejected when the file format or backup version is invalid. Files exported by an earlier app version use an older format version and are not accepted; import them before updating if you still need them.</li>
+            <li>An import is also refused, with nothing changed, when the file is larger than 64 MB or when one of its folders would end up nested inside a folder it already contains.</li>
           </ul>
           <h3>Single note</h3>
           <p>For an existing note, use <code>Export Note JSON</code> or <code>Import Note JSON</code> in the editor. When the note is in a Project folder, the file also carries its folder path. An imported note is loaded into the editor first; review it and tap Save when ready.</p>
@@ -493,7 +494,7 @@
           <p>If the screen shows an orange line saying the copy taken before the upgrade <em>could not be written</em>, the app never had a copy to fall back on — most often because the device was already out of storage. Free some space first; <strong>Try Again</strong> and <strong>Save My Data…</strong> both need room to work.</p>
           <ul class="checklist">
             <li><strong>Try Again</strong> — attempts to open the database again. Worth trying first if the device was low on storage.</li>
-            <li><strong>Restore a Copy…</strong> — puts a copy taken before an upgrade back in place. The database it replaces is moved into <code>StoreBackups</code>, keeping its name, so it can be put back from the same screen. A copy predates an upgrade, so it may not contain notes added since it was taken.</li>
+            <li><strong>Restore a Copy…</strong> — puts a copy taken before an upgrade back in place. The database it replaces is moved into <code>StoreBackups</code>, keeping its name, so it can be put back from the same screen. A copy predates an upgrade, so it may not contain notes added since it was taken. If the copy cannot be put in place — a full disk is the usual reason — the current database is left exactly as it was and the screen says so.</li>
             <li><strong>Copy Details</strong> — copies the app version, system version, error, file paths, and file sizes, so you can send them to support without typing anything by hand.</li>
             <li><strong>Save My Data…</strong> — saves your notes to a file you choose. If the database can still be read, you get a backup you can import again with <code>Import Data</code>. If it cannot, you get the database files themselves: they hold your notes but cannot be opened on this device, so keep them somewhere safe rather than sending them anywhere.</li>
             <li><strong>Start Over…</strong> — makes the app open again with an empty database. The current one is moved into <code>StoreBackups</code> and can be put back with <strong>Restore a Copy…</strong>, so this is not final either.</li>
