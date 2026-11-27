@@ -361,14 +361,14 @@
         <h1>Notes &amp; Ideas Support</h1>
         <p class="lede">Help for managing notes, projects and folders, tags, Markdown Preview, Trash, and import and export features locally.</p>
         <div class="meta">
-          <span>App version: 1.5.4 (Build 1)</span>
+          <span>App version: 1.5.5 (Build 1)</span>
           <span>Minimum system: iOS 26.0</span>
-          <span>Page updated: November 23, 2026</span>
+          <span>Page updated: November 27, 2026</span>
         </div>
         <div class="quick-grid" aria-label="Quick help">
           <article class="quick-item">
             <strong>Markdown Preview</strong>
-            <p>Tap the eye button in the editor's toolbar — between the Note JSON menu and the save checkmark — to open a full-screen preview. Use the centered top controls, pinch to enlarge content, and double-tap to fit the page or zoom in.</p>
+            <p>Tap the eye button in the editor's toolbar — next to the save checkmark — to open a full-screen preview. Use the centered top controls, pinch to enlarge content, and double-tap to fit the page or zoom in.</p>
           </article>
           <article class="quick-item">
             <strong>Search and tags</strong>
@@ -401,7 +401,7 @@
         <section class="card" id="preview-help">
           <h2>Using Full-Screen Markdown Preview</h2>
           <ol class="steps">
-            <li><div>Open a note and tap <code>Preview</code> (the eye) in the editor's toolbar, between the Note JSON menu and the save checkmark. The button is disabled while the note has no content.</div></li>
+            <li><div>Open a note and tap <code>Preview</code> (the eye) in the editor's toolbar, next to the save checkmark. The button is disabled while the note has no content.</div></li>
             <li><div>The app opens a full-screen Markdown preview over the editor. <code>Preview</code> is at the top left and <code>Done</code> is at the top right.</div></li>
             <li><div>Use the centered <code>-</code>, <code>+</code>, or fit controls. You can also pinch the content or double-tap it.</div></li>
             <li><div>The note is drawn as a page with a visible edge. Zoom out until the whole page fits on screen to see every table column and code line at once, then zoom in on the part you want to read.</div></li>
@@ -417,7 +417,7 @@
           <p>Use the top-right layout menu to switch the idea list between rows and tiles. The choice is remembered and applies to Notes &amp; Ideas, Project, folders, Archive, and Trash.</p>
           <ul class="checklist">
             <li>Rows keep the full-width layout with the title, excerpt, tags, and date on one line.</li>
-            <li>Tiles show the title, a short excerpt, a tag, and the date. Tapping a tile selects it; tapping the same tile again opens the idea in the editor, so a tap you did not mean does not take you out of the list.</li>
+            <li>Tiles show the title, a short excerpt, a tag, and the date. Tapping a tile selects it and draws an outline around it; a second tap on the same tile — a double tap — opens the idea in the editor. A single tap never opens anything, so a tap you did not mean does not take you out of the list.</li>
             <li>The number of tiles per row follows the width of the window rather than a fixed column count: two on an iPhone, and more — four or five — on an iPad or the unfolded display of a foldable. Tile width stays between 160 and 240 points, so tiles never stretch into a pair of oversized cards.</li>
             <li>On a foldable, the grid prefers an even number of columns when a fold divides the display, and opens a gap between the middle two so no tile sits on the fold itself.</li>
             <li>In Notes &amp; Ideas and Project, pinned ideas stay in a <code>Pinned</code> section above the <code>All Ideas</code> tiles, each drawn as a full-width card lined up with the tiles below.</li>
@@ -445,6 +445,7 @@
           <ul class="checklist">
             <li>Enter a title and body for a new note, then save it with the checkmark at the top right of the editor. Editor changes are written to local data only after you save.</li>
             <li>The title and body share one card with no section heading, and the body uses a monospaced font for editing. A new, empty idea starts at about 18 lines; once the body has text it grows to fill the rest of the screen, and the Tags section moves to the bottom of the page.</li>
+            <li>The row of formatting buttons above the body starts with a calendar and a clock. Tapping one inserts today's date or the current time at the caret, in the device's format, and the insert is undoable like typing. Headings, bold, italic, strikethrough, list, quote, divider, link, and code buttons follow them.</li>
             <li>Swiping a row left offers <code>Archive</code> and <code>Delete</code>. Archived ideas leave the Notes &amp; Ideas list, keep their content, and can be unarchived at any time.</li>
             <li>New tags in the tag picker are applied as draft state first and become persistent after the note is saved successfully.</li>
             <li>Deleting a tag removes only the tag relationship; it does not delete associated notes.</li>
@@ -482,8 +483,6 @@
             <li>Imports are rejected when the file format or backup version is invalid. Files exported by an earlier app version use an older format version and are not accepted; import them before updating if you still need them.</li>
             <li>An import is also refused, with nothing changed, when the file is larger than 64 MB or when one of its folders would end up nested inside a folder it already contains.</li>
           </ul>
-          <h3>Single note</h3>
-          <p>For an existing note, use <code>Export Note JSON</code> or <code>Import Note JSON</code> in the editor. When the note is in a Project folder, the file also carries its folder path. An imported note is loaded into the editor first; review it and tap Save when ready.</p>
           <h3>About, version, and privacy policy</h3>
           <p>The same list menu ends with <code>About</code>, which shows the app name together with the version and build number of the installed copy. It also opens the <a href="index.html">privacy policy</a> in your browser — the policy link used to sit directly in that menu.</p>
         </section>
@@ -576,7 +575,7 @@
           </details>
           <details>
             <summary>Why can I not import my old backup?</summary>
-            <p>This version uses a newer JSONL backup and single-note JSON format. Files created by earlier app versions are rejected instead of being upgraded, so import them with the older app version first if you still need their contents.</p>
+            <p>This version uses a newer JSONL backup format. Files created by earlier app versions are rejected instead of being upgraded, so import them with the older app version first if you still need their contents.</p>
           </details>
         </section>
 
